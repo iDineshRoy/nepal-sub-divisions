@@ -139,7 +139,7 @@ class NepalMunicipality:
                     "district": item["district"],
                     "province": item["province"],
                     "province_no": province_mapping.get(item["province"], "Unknown"),
-                    "country": item["country"],
+                    "country": "Nepal",
                 }
 
         raise MunicipalityNotFoundException(
