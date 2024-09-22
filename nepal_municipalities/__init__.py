@@ -1,1 +1,1 @@
-from .nepali_municipalities import *
+from .nepal_municipalities import *

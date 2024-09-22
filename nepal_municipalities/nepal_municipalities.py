@@ -25,7 +25,7 @@ class NepalMunicipality:
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
     DATA_PATH = os.path.join(BASE_DIR, "data", "data.json")
     ALL_MUNICIPALITIES_PATH = os.path.join(
-        BASE_DIR, "data", "all_nepali_municipalities.json"
+        BASE_DIR, "data", "all_nepal_municipalities.json"
     )
 
     def __init__(self, district_name: str = None):
@@ -93,6 +93,17 @@ class NepalMunicipality:
 
     @classmethod
     def all_districts(cls, province_name: str = None) -> list[str]:
+        """Use this method to get a list of all districts of Nepal."""
+        data = cls._load_json(cls.DATA_PATH)
+        muni_data = cls._load_json(cls.ALL_MUNICIPALITIES_PATH)
+        all_districts: list = [list(item.keys())[0] for item in data]
+        if province_name:
+            filtered_entries = [e for e in muni_data if e["province"] == province_name]
+            all_districts = list(set([entry["district"] for entry in filtered_entries]))
+        return all_districts
+
+    @classmethod
+    def districts(cls, province_name: str = None) -> list[str]:
         """Use this method to get a list of all districts of Nepal."""
         data = cls._load_json(cls.DATA_PATH)
         muni_data = cls._load_json(cls.ALL_MUNICIPALITIES_PATH)

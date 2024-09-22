@@ -29,12 +29,12 @@ No matching info for provided municipalities try changing spelling or try anothe
 **To get list of all districts of Nepal**
 
 ```python
-from nepali_municipalities import NepalMunicipality
+from nepal_municipalities import NepalMunicipality
 
-print(NepalMunicipality.all_districts()) # this will also give the same result
+print(NepalMunicipality.all_districts())
 # ['Bhojpur', 'Dhankuta', 'Ilam', 'Jhapa', ......]
 
-print(NepalMunicipality.all_districts("Koshi")) # search by province name
+print(NepalMunicipality.districts("Koshi")) # search by province name
 # ['Morang', 'Sankhuwasabha', 'Udayapur', 'Jhapa', ......]
 
 ```
@@ -42,7 +42,7 @@ print(NepalMunicipality.all_districts("Koshi")) # search by province name
 To get list of all municipalities of Nepal based on District provided.
 
 ```python
-from nepali_municipalities import NepalMunicipality
+from nepal_municipalities import NepalMunicipality
 
 print(NepalMunicipality.municipalities('Kathmandu'))
 
@@ -52,7 +52,7 @@ print(NepalMunicipality.municipalities('Kathmandu'))
 
 
 # Contributing
-PRs are welcomed. Please, let me know if you have any suggestions or find any bugs.
+Pull requests are welcome! Please feel free to reach out if you have any suggestions or encounter any bugs.
 
 
 ## License
