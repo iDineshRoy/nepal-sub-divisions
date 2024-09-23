@@ -1,4 +1,4 @@
-# Nepali Municipalities
+# Nepal Municipalities
 [![Downloads](https://static.pepy.tech/personalized-badge/nepal-sub-divisions?period=total&units=international_system&left_color=black&right_color=yellowgreen&left_text=Downloads)](https://pepy.tech/project/nepal-sub-divisions)
 
 
@@ -15,8 +15,15 @@ for example if you provide municipalities names then rest of district and provin
 ```python
 from nepal_municipalities import NepalMunicipality
 
-print(NepalMunicipality.all_data_info('Kathmandu'))
-[{'province': 'Province 3', 'country': 'Nepal', 'id': 311, 'district': 'Kathmandu', 'name': 'Kathmandu'}]
+print(NepalMunicipality.all_data_info('Kathmandu Metropolitan City'))
+{'municipality': 'Kathmandu Metropolitan City', 'district': 'Kathmandu', 'province': 'Bagmati', 'province_no': 'Province 3', 'country': 'Nepal'}
+
+print(NepalMunicipality.all_data_info('Ratuwamai Municipality'))
+{'municipality': 'Ratuwamai Municipality', 'district': 'Morang', 'province': 'Koshi', 'province_no': 'Province 1', 'country': 'Nepal'}
+
+print(NepalMunicipality.all_data_info('Ratuwamai'))
+{'municipality': 'Ratuwamai Municipality', 'district': 'Morang', 'province': 'Koshi', 'province_no': 'Province 1', 'country': 'Nepal'}
+
 ```
 
 **If No matching municipalities are supplied The Exception is thrown as below**
@@ -31,8 +38,6 @@ No matching info for provided municipalities try changing spelling or try anothe
 ```python
 from nepal_municipalities import NepalMunicipality
 
-print(NepalMunicipality.all_districts())
-# ['Bhojpur', 'Dhankuta', 'Ilam', 'Jhapa', ......]
 
 print(NepalMunicipality.districts("Koshi")) # search by province name
 # ['Morang', 'Sankhuwasabha', 'Udayapur', 'Jhapa', ......]

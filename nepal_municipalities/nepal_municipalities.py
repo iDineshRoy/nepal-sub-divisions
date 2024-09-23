@@ -38,25 +38,6 @@ class NepalMunicipality:
         with open(file_path, "r") as f:
             return json.load(f)
 
-    def all_municipalities(self):
-        """
-        Use this to get list of all municipalities of specific district
-        provided from class instance if district is none You will get None as return Value
-        """
-        if self._district_name is not None:
-            for items in self._data:
-                if self._district_name in self.all_districts():
-                    if items.get(self._district_name) is not None:
-                        return items.get(self._district_name)
-                else:
-                    raise DistrictNotFoundException(
-                        "District not found for following text, please check "
-                        "district spelling."
-                    )
-        raise DistrictNotProvidedException(
-            "District not provided please provide district name."
-        )
-
     @classmethod
     def municipalities(cls, district_name: str = None):
         """
@@ -76,7 +57,7 @@ class NepalMunicipality:
             )
 
         data = cls._load_json(cls.DATA_PATH)
-        districts = cls.all_districts()
+        districts = cls.districts()
 
         if district_name not in districts:
             raise DistrictNotFoundException(
@@ -92,26 +73,14 @@ class NepalMunicipality:
         )
 
     @classmethod
-    def all_districts(cls, province_name: str = None) -> list[str]:
-        """Use this method to get a list of all districts of Nepal."""
-        data = cls._load_json(cls.DATA_PATH)
-        muni_data = cls._load_json(cls.ALL_MUNICIPALITIES_PATH)
-        all_districts: list = [list(item.keys())[0] for item in data]
-        if province_name:
-            filtered_entries = [e for e in muni_data if e["province"] == province_name]
-            all_districts = list(set([entry["district"] for entry in filtered_entries]))
-        return all_districts
-
-    @classmethod
     def districts(cls, province_name: str = None) -> list[str]:
         """Use this method to get a list of all districts of Nepal."""
-        data = cls._load_json(cls.DATA_PATH)
         muni_data = cls._load_json(cls.ALL_MUNICIPALITIES_PATH)
-        all_districts: list = [list(item.keys())[0] for item in data]
         if province_name:
             filtered_entries = [e for e in muni_data if e["province"] == province_name]
-            all_districts = list(set([entry["district"] for entry in filtered_entries]))
-        return all_districts
+            return list(set([entry["district"] for entry in filtered_entries]))
+        else:
+            return list(set([entry["district"] for entry in muni_data]))
 
     @classmethod
     def all_data_info(cls, municipality_name: str = None) -> Dict[str, str]:
@@ -133,7 +102,7 @@ class NepalMunicipality:
         }
 
         for item in data:
-            if item["name"].lower() == municipality_name.lower():
+            if municipality_name.lower() in item["name"].lower():
                 return {
                     "municipality": item["name"],
                     "district": item["district"],
