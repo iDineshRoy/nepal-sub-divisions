@@ -22,7 +22,7 @@ class MunicipalityNotFoundException(Exception):
 
 
 class NepalMunicipality:
-    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    BASE_DIR = os.path.dirname(__file__)
     DATA_PATH = os.path.join(BASE_DIR, "data", "data.json")
     ALL_MUNICIPALITIES_PATH = os.path.join(
         BASE_DIR, "data", "all_nepal_municipalities.json"
