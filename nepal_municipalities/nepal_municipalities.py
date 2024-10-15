@@ -39,7 +39,7 @@ class NepalMunicipality:
             return json.load(f)
 
     @classmethod
-    def municipalities(cls, district_name: str = None):
+    def municipalities(cls, district_name: str = None) -> list[str]:
         """
         Use this method to get a list of all municipalities in a specific district.
         :param district_name: The name of the district. If None, use the instance's district name.
