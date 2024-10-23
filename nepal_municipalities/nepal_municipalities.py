@@ -83,7 +83,7 @@ class NepalMunicipality:
             return list(set([entry["district"] for entry in muni_data]))
 
     @classmethod
-    def all_data_info(cls, municipality_name: str = None) -> Dict[str, str]:
+    def all_data_info(cls, municipality_name: str = None) -> list[Dict]:
         """
         Use this method to get the details of a specific municipality, such as its district, province, and province number.
         :param municipality_name: The name of the municipality.
@@ -101,20 +101,23 @@ class NepalMunicipality:
             "Sudurpashchim": "Province 7",
         }
 
-        for item in data:
-            if municipality_name.lower() in item["name"].lower():
-                return {
-                    "municipality": item["name"],
-                    "district": item["district"],
-                    "province": item["province"],
-                    "province_no": province_mapping.get(item["province"], "Unknown"),
-                    "country": "Nepal",
-                }
-
-        raise MunicipalityNotFoundException(
-            f"No matching info for provided municipality '{municipality_name}'. "
-            "Please check the spelling or try another name."
-        )
+        matching_items = [
+            {
+                "municipality": item["name"],
+                "district": item["district"],
+                "province": item["province"],
+                "province_no": province_mapping.get(item["province"], "Unknown"),
+                "country": "Nepal",
+            }
+            for item in data
+            if municipality_name.lower() in item["name"].lower()
+        ]
+        return matching_items
+        if not matching_items:
+            raise MunicipalityNotFoundException(
+                f"No matching info for provided municipality '{municipality_name}'. "
+                "Please check the spelling or try another name."
+            )
 
 
 if __name__ == "__main__":

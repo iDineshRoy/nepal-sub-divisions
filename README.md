@@ -16,13 +16,16 @@ for example if you provide municipalities names then rest of district and provin
 from nepal_municipalities import NepalMunicipality
 
 print(NepalMunicipality.all_data_info('Kathmandu Metropolitan City'))
-{'municipality': 'Kathmandu Metropolitan City', 'district': 'Kathmandu', 'province': 'Bagmati', 'province_no': 'Province 3', 'country': 'Nepal'}
+[{'municipality': 'Kathmandu Metropolitan City', 'district': 'Kathmandu', 'province': 'Bagmati', 'province_no': 'Province 3', 'country': 'Nepal'}]
 
 print(NepalMunicipality.all_data_info('Ratuwamai Municipality'))
-{'municipality': 'Ratuwamai Municipality', 'district': 'Morang', 'province': 'Koshi', 'province_no': 'Province 1', 'country': 'Nepal'}
+[{'municipality': 'Ratuwamai Municipality', 'district': 'Morang', 'province': 'Koshi', 'province_no': 'Province 1', 'country': 'Nepal'}]
 
 print(NepalMunicipality.all_data_info('Ratuwamai'))
-{'municipality': 'Ratuwamai Municipality', 'district': 'Morang', 'province': 'Koshi', 'province_no': 'Province 1', 'country': 'Nepal'}
+[{'municipality': 'Ratuwamai Municipality', 'district': 'Morang', 'province': 'Koshi', 'province_no': 'Province 1', 'country': 'Nepal'}]
+
+print(NepalMunicipality.all_data_info('Rat'))
+[{'municipality': 'Biratnagar Metropolitan City', 'district': 'Morang', 'province': 'Koshi', 'province_no': 'Province 1', 'country': 'Nepal'}, {'municipality': 'Ratuwamai Municipality', 'district': 'Morang', 'province': 'Koshi', 'province_no': 'Province 1', 'country': 'Nepal'}, {'municipality': 'Bharatpur Metropolitan City', 'district': 'Chitwan', 'province': 'Bagmati', 'province_no': 'Province 3', 'country': 'Nepal'}, {'municipality': 'Ratnanagar Municipality', 'district': 'Chitwan', 'province': 'Bagmati', 'province_no': 'Province 3', 'country': 'Nepal'}, {'municipality': 'Mahabharat Rural Municipality', 'district': 'Kavrepalanchowk', 'province': 'Bagmati', 'province_no': 'Province 3', 'country': 'Nepal'}, {'municipality': 'Pratappur Rural Municipality', 'district': 'Nawalparasi West', 'province': 'Lumbini', 'province_no': 'Province 5', 'country': 'Nepal'}, {'municipality': 'Dasharathchand Municipality', 'district': 'Baitadi', 'province': 'Sudurpashchim', 'province_no': 'Province 7', 'country': 'Nepal'}]
 
 ```
 
