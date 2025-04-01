@@ -15,6 +15,7 @@ setup(
     author_email="dinesh.roy@hotmail.com",
     packages=setuptools.find_packages(),
     include_package_data=True,
+    license_file="LICENSE",
     package_data={
         "nepal_municipalities": ["data/*.json"],
     },
