@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="nepal-sub-divisions",
-    version="0.0.7",  # Required
+    version="0.0.8",  # Required
     description="Nepali  municipalities is a python package to get data about Nepali municipalities based on districts",
     url="https://github.com/iDineshRoy/nepal-sub-divisions",
     long_description=long_description,
